@@ -3,27 +3,34 @@ import React from 'react'
 
 const noop = () => ({})
 
-const withStore = ({
-  state: mappedState = noop,
-  actions: mappedActions = noop
-}) => Component => {
+const wrapWithStore = ({
+  actions: mappedActions = noop,
+  state: mappedState = noop
+}) => {
 
-  const HOC = (props, { actions, state }) => (
-    <Component
-      { ...props }
-      { ...mappedState(state) }
-      { ...mappedActions(actions) }
-    />
-  )
+  return Component => {
 
-  HOC.contextTypes = {
-    actions: PropTypes.objectOf(PropTypes.func),
-    state: PropTypes.object
+    const withStore = (props, { state, updater }) => (
+      <Component
+        { ...props }
+        { ...mappedActions(updater) }
+        { ...mappedState(state) }
+      />
+    )
+
+    withStore.contextTypes = {
+      state: PropTypes.object,
+      updater: PropTypes.func
+    }
+
+    withStore.displayName = `withStore(${
+      Component.displayName ||
+      Component.name ||
+      'Component'
+    })`
+
+    return withStore
   }
-
-  HOC.displayName = `withStore(${ Component.displayName || Component.name || 'Component' })`
-
-  return HOC
 }
 
-export default withStore;
+export default wrapWithStore;

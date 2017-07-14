@@ -1,19 +1,21 @@
 import React from 'react'
 import withStore from './withStore'
 
-const App = ({
-  count,
-  decrement,
-  increment,
-}) => (
+const decrement = ({ count }) => ({ count: count - 1 })
+const increment = ({ count }) => ({ count: count + 1 })
+
+const App = (props) => (
   <div>
-    <div>{count}</div>
-    <button onClick={decrement}>-</button>
-    <button onClick={increment}>+</button>
+    <div>{props.count}</div>
+    <button onClick={props.decrement}>-</button>
+    <button onClick={props.increment}>+</button>
   </div>
 )
 
 export default withStore({
-  actions: actions => ({ ...actions }),
-  state: state => ({ ...state })
+  actions: updater => ({
+    decrement: updater(decrement),
+    increment: updater(increment)
+  }),
+  state: ({ count }) => ({ count })
 })(App)
