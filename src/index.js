@@ -4,8 +4,8 @@ import Counter from './Counter';
 import store from './store';
 
 const logger = ({ collapsed }) => (prevState, nextState, updatedBy) => {
-  const title = `%caction %c@ %c${ (new Date()).toISOString() } %cby %c${ updatedBy }`
-  const styles = ['color: blue', 'color: black', 'color: green', 'color: black', 'color: orange']
+  const title = `%c${ (new Date()).toISOString() } %cstore %cupdated %cby %c${ updatedBy }`
+  const styles = ['color: green', 'color: black', 'color: blue', 'color: black', 'color: orange']
   console[collapsed ? 'groupCollapsed' : 'group'](title, ...styles)
   console.log(`Previous State: `, prevState)
   console.log(`Current State: `, nextState)
