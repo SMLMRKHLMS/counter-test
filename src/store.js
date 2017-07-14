@@ -24,7 +24,7 @@ const wrapStore = (initialState = {}, subscriptions = []) => {
         () => subscriptions.forEach(fn => fn(
           prevState,
           this.state,
-          mapFn.name || 'anonymous'
+          mapFn.displayName || mapFn.name || 'anonymous'
         ))
       )
     }
