@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-const noop = () => ({})
+const identity = arg => arg
 
 const wrapWithStore = (
-  mappedState = noop,
-  mappedActions = noop
+  mappedState = identity,
+  mappedActions = identity
 ) => {
 
   return Component => {
