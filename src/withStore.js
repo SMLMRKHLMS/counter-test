@@ -3,10 +3,10 @@ import React from 'react'
 
 const noop = () => ({})
 
-const wrapWithStore = ({
-  actions: mappedActions = noop,
-  state: mappedState = noop
-}) => {
+const wrapWithStore = (
+  mappedState = noop,
+  mappedActions = noop
+) => {
 
   return Component => {
 

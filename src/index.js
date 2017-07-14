@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import Counter from './Counter';
 import store from './store';
 
-const AppContainer = store({ state: { count: 0 } })(App)
+const App = store({ count: 0 })(Counter)
 
-ReactDOM.render(<AppContainer />, document.getElementById('root'))
+ReactDOM.render(<App hello="world" />, document.getElementById('root'))
