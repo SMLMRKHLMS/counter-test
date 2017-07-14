@@ -17,7 +17,7 @@ const wrapStore = (initialState = {}, subscriptions = []) => {
 
     state = initialState
 
-    updaterMethod = mapFn => () => {
+    updaterMethod = mapFn => {
       const prevState = { ...this.state }
       this.setState(
         mapFn,

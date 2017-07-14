@@ -1,10 +1,11 @@
 import React from 'react'
+import TodoApp from './TodoApp'
 import withStore from './withStore'
 import { decrement, increment } from './actions'
 
 const mappedActions = updater => ({
-  decrement: updater(decrement),
-  increment: updater(increment)
+  decrement: () => updater(decrement),
+  increment: () => updater(increment)
 })
 
 const Counter = ({
@@ -18,6 +19,7 @@ const Counter = ({
     <div>{ count }</div>
     <button onClick={ decrement }>-</button>
     <button onClick={ increment }>+</button>
+    <TodoApp />
   </div>
 )
 
