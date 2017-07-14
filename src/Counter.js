@@ -2,8 +2,11 @@ import styled from 'emotion/react';
 import React from 'react'
 import withStore from './withStore'
 
-const Button = styled('button')`
+const Button = styled.button`
   border: 0;
+  border-radius: 0;
+  margin: 0 10px;
+  padding: 10px 20px;
 `
 
 const Counter = ({
