@@ -19,7 +19,7 @@ const Counter = ({
     <div>{ count }</div>
     <button onClick={ decrement }>-</button>
     <button onClick={ increment }>+</button>
-    <TodoApp />
+    <TodoApp count={ count } />
   </div>
 )
 
