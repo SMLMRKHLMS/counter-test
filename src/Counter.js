@@ -1,13 +1,11 @@
-import styled from 'emotion/react';
 import React from 'react'
 import withStore from './withStore'
+import { decrement, increment } from './actions'
 
-const Button = styled.button`
-  border: 0;
-  border-radius: 0;
-  margin: 0 10px;
-  padding: 10px 20px;
-`
+const mappedActions = updater => ({
+  decrement: updater(decrement),
+  increment: updater(increment)
+})
 
 const Counter = ({
   count,
@@ -18,14 +16,9 @@ const Counter = ({
   <div>
     <div>{ `App Name: Hello, ${ hello }!` }</div>
     <div>{ count }</div>
-    <Button onClick={ decrement }>-</Button>
-    <Button onClick={ increment }>+</Button>
+    <button onClick={ decrement }>-</button>
+    <button onClick={ increment }>+</button>
   </div>
 )
 
-const decrement = ({ count }) => ({ count: count > 0 ? count - 1 : 0 })
-const increment = ({ count }) => ({ count: count + 1 })
-const mappedActions = updater => ({ decrement: updater(decrement), increment: updater(increment) })
-const mappedState = state => state
-
-export default withStore(mappedState, mappedActions)(Counter)
+export default withStore(state => state, mappedActions)(Counter)
