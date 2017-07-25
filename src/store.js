@@ -12,12 +12,12 @@ const wrapStore = (initialState = {}, subscriptions = []) => {
 
     getChildContext = () => ({
       state: this.state,
-      updater: this.updater
+      updater: this.updaterMethod
     })
 
     state = initialState
 
-    updater = (reducer, action) => {
+    updaterMethod = (reducer, action) => {
       const prevState = { ...this.state }
       this.setState(
         reducer,
