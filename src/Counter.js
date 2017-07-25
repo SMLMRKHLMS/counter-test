@@ -1,26 +1,28 @@
 import React from 'react'
-import TodoApp from './TodoApp'
 import withStore from './withStore'
-import { decrement, increment } from './actions'
 
-const mappedActions = updater => ({
-  decrement: () => updater(decrement),
-  increment: () => updater(increment)
-})
+export default withStore(
 
-const Counter = ({
+  /* MAPPED STATE */
+  ({ count }) => ({ count }),
+
+  /* MAPPED ACTIONS */
+  updater => ({
+    decrement: () => updater(({ count }) => ({ count: count > 0 ? count - 1 : 0 })),
+    increment: () => updater(({ count }) => ({ count: count + 1 }))
+  })
+
+  /* VIEW */
+)(function Counter({
   count,
   decrement,
-  increment,
-  hello
-}) => (
-  <div>
-    <div>{ `App Name: Hello, ${ hello }!` }</div>
-    <div>{ count }</div>
-    <button onClick={ decrement }>-</button>
-    <button onClick={ increment }>+</button>
-    <TodoApp count={ count } />
-  </div>
-)
-
-export default withStore(state => state, mappedActions)(Counter)
+  increment
+}){
+  return (
+    <div>
+      <div>{ count }</div>
+      <button onClick={ decrement }>-</button>
+      <button onClick={ increment }>+</button>
+    </div>
+  )
+})

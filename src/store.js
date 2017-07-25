@@ -17,14 +17,14 @@ const wrapStore = (initialState = {}, subscriptions = []) => {
 
     state = initialState
 
-    updaterMethod = mapFn => {
+    updaterMethod = (reducer, action) => {
       const prevState = { ...this.state }
       this.setState(
-        mapFn,
+        reducer,
         () => subscriptions.forEach(fn => fn(
           prevState,
           this.state,
-          mapFn.displayName || mapFn.name || 'anonymous'
+          action || reducer.name || 'ANONYMOUS'
         ))
       )
     }

@@ -9,4 +9,7 @@ const App = store(
   [ logger({ collapsed: true }) ]
 )(Counter)
 
-ReactDOM.render(<App hello="world" />, document.getElementById('root'))
+ReactDOM.render(
+  <App hello="world" />,
+  document.getElementById('root')
+)

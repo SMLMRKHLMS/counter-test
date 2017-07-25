@@ -8,9 +8,3 @@ export const addTodo = ({ keyCode, target }) => state => {
 }
 
 export const updateInput = input => () => ({ input })
-
-/* COUNTER ACTIONS */
-
-export const decrement = ({ count }) => ({ count: count > 0 ? count - 1 : 0 })
-
-export const increment = ({ count }) => ({ count: count + 1 })
