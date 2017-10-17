@@ -1,18 +1,13 @@
 import React from 'react'
+import TodoApp from './TodoApp';
 import withStore from './withStore'
 
 export default withStore(
-
-  /* MAPPED STATE */
   ({ count }) => ({ count }),
-
-  /* MAPPED ACTIONS */
-  updater => ({
-    decrement: () => updater(({ count }) => ({ count: count > 0 ? count - 1 : 0 })),
-    increment: () => updater(({ count }) => ({ count: count + 1 }))
-  })
-
-  /* VIEW */
+  {
+    decrement: ({ count }) => ({ count: count > 0 ? count - 1 : 0 }),
+    increment: ({ count }) => ({ count: count + 1 })
+  }
 )(function Counter({
   count,
   decrement,
@@ -23,6 +18,7 @@ export default withStore(
       <div>{ count }</div>
       <button onClick={ decrement }>-</button>
       <button onClick={ increment }>+</button>
+      <TodoApp />
     </div>
   )
 })

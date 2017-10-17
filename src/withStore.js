@@ -5,10 +5,27 @@ const identity = arg => arg
 
 const wrapWithStore = (
   mappedState = identity,
-  mappedActions = identity
+  actions = identity
 ) => {
 
   return Component => {
+
+    const mappedActions = updater => Object
+      .entries(actions)
+      .reduce((acc, [key, value]) => Object.assign(acc, {
+        [key]: (...args) => {
+
+          const mappedArgs = args.map(arg => {
+            if (typeof arg === 'object') return Object.assign({}, arg)
+            return arg
+          })
+
+          updater(
+            state => value(state, ...mappedArgs),
+            value.name
+          )
+        }
+      }), {});
 
     const withStore = (props, { state, updater }) => (
       <Component

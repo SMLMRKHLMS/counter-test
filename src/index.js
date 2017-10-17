@@ -10,6 +10,6 @@ const App = store(
 )(Counter)
 
 ReactDOM.render(
-  <App hello="world" />,
+  <App />,
   document.getElementById('root')
 )

@@ -2,11 +2,6 @@ import React from 'react'
 import withStore from './withStore'
 import { addTodo, updateInput } from './actions'
 
-const mappedActions = updater => ({
-  addTodo: e => updater(addTodo(e)),
-  updateInput: ({ target }) => updater(updateInput(target.value))
-})
-
  const TodoList = ({
    addTodo,
    input,
@@ -24,4 +19,4 @@ const mappedActions = updater => ({
   </div>
 )
 
-export default withStore(state => state, mappedActions)(TodoList)
+export default withStore(state => state, { addTodo, updateInput })(TodoList)
