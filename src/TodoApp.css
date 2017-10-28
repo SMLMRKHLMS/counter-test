@@ -1,0 +1,17 @@
+.delete {
+  color: blue;
+  display: inline-block;
+  font-size: 10px;
+  margin-left: 10px;
+  margin-bottom: 3px;
+  text-decoration: underline;
+  vertical-align: middle;
+}
+
+.text {
+  vertical-align: bottom;
+}
+
+.text.complete {
+  text-decoration: line-through;
+}
