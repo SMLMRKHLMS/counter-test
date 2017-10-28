@@ -3,11 +3,6 @@ export const add = ({ input, todos }) => input && ({
   todos: [...todos, { done: false, value: input }]
 })
 
-export const clear = () => ({
-  input: '',
-  todos: []
-})
-
 export const remove = ({ todos }, index) => ({
   todos: [...todos.slice(0, index), ...todos.slice(index + 1)]
 })

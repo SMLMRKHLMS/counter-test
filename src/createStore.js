@@ -26,7 +26,7 @@ const createStore = (initialState = {}, subscriptions = []) => {
         () => subscriptions.forEach(fn => fn(
           this.state,
           prevState,
-          reducer
+          reducer.displayName || reducer.name
         ))
       )
     }

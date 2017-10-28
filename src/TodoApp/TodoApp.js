@@ -2,7 +2,6 @@ import React from 'react'
 
 function TodoApp({
   add,
-  clear,
   input,
   remove,
   todos,
@@ -17,7 +16,6 @@ function TodoApp({
         value={input}
       />
       <button onClick={add}>Add</button>
-      <button onClick={clear}>Clear</button>
       <ol>
         { todos.map(({ done, value }, i) => (
           <li key={`${value}-${i}`}>
