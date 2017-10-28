@@ -1,6 +1,6 @@
-import store from './store'
+import createStore from './createStore'
 import TodoList from './TodoList'
 
-const TodoApp = store({ input: '', todos: [] })(TodoList)
+const TodoApp = createStore({ input: '', todos: [] })(TodoList)
 
 export default TodoApp

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-const wrapStore = (initialState = {}, subscriptions = []) => {
+const createStore = (initialState = {}, subscriptions = []) => {
 
   return Component => class Store extends React.Component {
 
@@ -10,21 +10,23 @@ const wrapStore = (initialState = {}, subscriptions = []) => {
       updater: PropTypes.func
     }
 
-    getChildContext = () => ({
-      state: this.state,
-      updater: this.updaterMethod
-    })
+    getChildContext() {
+      return {
+        state: this.state,
+        updater: this.updaterMethod
+      }
+    }
 
     state = initialState
 
-    updaterMethod = (reducer, action) => {
+    updaterMethod = (reducer) => {
       const prevState = { ...this.state }
       this.setState(
         reducer,
         () => subscriptions.forEach(fn => fn(
-          prevState,
           this.state,
-          action || reducer.name || 'ANONYMOUS'
+          prevState,
+          reducer.displayName || reducer.name || 'ANONYMOUS'
         ))
       )
     }
@@ -33,4 +35,4 @@ const wrapStore = (initialState = {}, subscriptions = []) => {
   }
 }
 
-export default wrapStore
+export default createStore

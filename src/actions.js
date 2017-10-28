@@ -1,8 +1,8 @@
 /* TO-DO ACTIONS */
 
-export const addTodo = (state, { keyCode, target }) => {
+export const addTodo = (state, { currentTarget, keyCode }) => {
   if (keyCode === 13 && !!state.input) {
-    return { input: '', todos: [...state.todos, target.value] }
+    return { input: '', todos: [...state.todos, currentTarget.value] }
   }
   return state
 }

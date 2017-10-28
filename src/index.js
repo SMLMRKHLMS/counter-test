@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Counter from './Counter';
 import logger from './logger';
-import store from './store';
+import createStore from './createStore';
 
-const App = store(
+const App = createStore(
   { count: 0 },
   [ logger({ collapsed: true }) ]
 )(Counter)

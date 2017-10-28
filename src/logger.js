@@ -1,9 +1,9 @@
-const logger = ({ collapsed }) => (prevState, nextState, updatedBy) => {
-  const title = `%c${ (new Date()).toLocaleString() } %cstore %cupdated %cby %c${ updatedBy }`
+const logger = ({ collapsed = true }) => (nextState, prevState, reducer) => {
+  const title = `%c${ (new Date()).toLocaleString() } %cstore %cupdated %cby %c${ reducer }`
   const styles = ['color: green', 'color: black', 'color: blue', 'color: black', 'color: orange']
   console[collapsed ? 'groupCollapsed' : 'group'](title, ...styles)
-  console.log(`Previous State: `, prevState)
-  console.log(`Current State: `, nextState)
+  console.log(`Prev State: `, prevState)
+  console.log(`Next State: `, nextState)
   console.groupEnd(title)
 }
 
