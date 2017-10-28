@@ -20,12 +20,12 @@ function TodoApp({
       <button onClick={clear}>Clear</button>
       <ol>
         { todos.map(({ done, value }, i) => (
-          <li key={`${ value }-${ i }`}>
+          <li key={`${value}-${i}`}>
             <input
               onClick={() => toggle(i)}
               type="checkbox"
             />
-            <span className={`text${ done ? ' complete' : '' }`}>
+            <span className={`text${done ? ' complete' : ''}`}>
               {value}
             </span>
             <a
