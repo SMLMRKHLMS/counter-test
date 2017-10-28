@@ -5,7 +5,7 @@ import withStore from './withStore'
 import './TodoApp.css';
 
 const TodoApp = withStore(
-  ({ todos }) => ({ todos }),
+  state => state,
   {
     add: ({input, todos}) => input && ({
       input: '',
@@ -49,10 +49,10 @@ const TodoApp = withStore(
               {value}
             </span>
             <a
-              className="delete"
+              className="remove"
               onClick={() => remove(i)}
             >
-              delete
+              remove
             </a>
           </li>
         )) }
