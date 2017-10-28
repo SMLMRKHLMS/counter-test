@@ -4,7 +4,8 @@ export const add = ({ input, todos }) => input && ({
 })
 
 export const clear = () => ({
-  input: '', todos: []
+  input: '',
+  todos: []
 })
 
 export const remove = ({ todos }, index) => ({
