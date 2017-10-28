@@ -1,12 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Counter from './Counter';
-import logger from './logger';
-import createStore from './createStore';
+import logger from './logger'
+import createStore from './createStore'
+import React from 'react'
+import ReactDOM from 'react-dom'
+import TodoApp from './TodoApp'
 
 const App = createStore(
-  { count: 0 },
+  { input: '', todos: [] },
   [ logger({ collapsed: true }) ]
-)(Counter)
+)(TodoApp)
 
 ReactDOM.render(<App />, document.getElementById('root'))
