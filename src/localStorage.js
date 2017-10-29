@@ -5,10 +5,10 @@ export const getItem = (key, fallback) => {
 
 export const setItem = ({
   key,
-  saveIf = true
+  setIf = true
 } = {}) => (type, state) => {
-  const shouldSave = typeof saveIf === 'function'
-    ? saveIf(type, state)
-    : saveIf
+  const shouldSave = typeof setIf === 'function'
+    ? setIf(type, state)
+    : setIf
   if (shouldSave) localStorage.setItem(key, JSON.stringify(state))
 }

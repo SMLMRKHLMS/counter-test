@@ -7,7 +7,7 @@ import { getItem, setItem } from './localStorage'
 const App = createStore(
   getItem('todos', { input: '', todos: [] }),
   [
-    setItem({ key: 'todos', saveIf: type => type !== 'update' })
+    setItem({ key: 'todos', setIf: type => type !== 'update' })
   ]
 )(TodoApp)
 
