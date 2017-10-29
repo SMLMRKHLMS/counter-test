@@ -2,11 +2,11 @@ import createStore from './createStore'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import TodoApp from './TodoApp'
-import { retrieveFromLocalStorage, saveToLocalStorage } from './localStorage'
+import { getItem, setItem } from './localStorage'
 
 const App = createStore(
-  retrieveFromLocalStorage('todos', { input: '', todos: [] }),
-  [saveToLocalStorage({ key: 'todos', saveIf: type => type !== 'update' })]
+  getItem('todos', { input: '', todos: [] }),
+  [setItem({ key: 'todos', saveIf: type => type !== 'update' })]
 )(TodoApp)
 
 ReactDOM.render(<App />, document.getElementById('root'))
