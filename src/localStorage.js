@@ -3,9 +3,12 @@ export const retrieveFromLocalStorage = (key, fallback) => {
   return item ? item : fallback
 }
 
-export const saveToLocalStorage = (key, condition = true) => (state, _, reducer) => {
-  const shouldSave = typeof condition === 'function'
-    ? condition(state, reducer)
-    : condition
+export const saveToLocalStorage = ({
+  key,
+  saveIf = true
+} = {}) => (type, state) => {
+  const shouldSave = typeof saveIf === 'function'
+    ? saveIf(type, state)
+    : saveIf
   if (shouldSave) localStorage.setItem(key, JSON.stringify(state))
 }

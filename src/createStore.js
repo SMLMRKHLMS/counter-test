@@ -19,14 +19,14 @@ const createStore = (initialState = {}, subscriptions = []) => {
 
     state = initialState
 
-    updaterMethod = (reducer) => {
+    updaterMethod = (type, reducer) => {
       const prevState = { ...this.state }
       this.setState(
         reducer,
         () => subscriptions.forEach(fn => fn(
+          type,
           this.state,
-          prevState,
-          reducer.displayName || reducer.name
+          prevState
         ))
       )
     }

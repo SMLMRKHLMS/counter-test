@@ -10,8 +10,7 @@ const wrapWithStore = (mappedState, reducers) => Component => {
       [key]: (...args) => {
         const copied = args.map(arg => typeof arg === 'object' ? { ...arg } : arg)
         const reducer = state => value(state, ...copied)
-        reducer.displayName = value.name
-        updater(reducer)
+        updater(key, reducer)
       }
     }), {});
 
