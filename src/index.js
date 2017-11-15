@@ -1,4 +1,5 @@
 import createStore from './createStore'
+import logger from './logger';
 import React from 'react'
 import ReactDOM from 'react-dom'
 import TodoApp from './TodoApp'
@@ -7,7 +8,8 @@ import { getItem, setItem } from './localStorage'
 const App = createStore(
   getItem('todos', { input: '', todos: [] }),
   [
-    setItem({ key: 'todos', setIf: type => type !== 'update' })
+    logger({ logIf: action => action !== 'update' }),
+    setItem({ key: 'todos', setIf: action => action !== 'update' })
   ]
 )(TodoApp)
 
