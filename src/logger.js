@@ -1,4 +1,4 @@
-const logger = ({ collapsed = true, logIf = true } = {}) => (action, currentState, prevState) => {
+const logger = (collapsed = true, logIf = true) => (action, currentState, prevState) => {
 
   const shouldLog = typeof logIf === 'function'
     ? logIf(action, currentState, prevState)

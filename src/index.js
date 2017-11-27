@@ -8,8 +8,8 @@ import { getItem, setItem } from './localStorage'
 const App = createStore(
   getItem('todos', { input: '', todos: [] }),
   [
-    logger({ logIf: action => action !== 'update' }),
-    setItem({ key: 'todos', setIf: action => action !== 'update' })
+    logger(true, action => action !== 'update'),
+    setItem('todos', action => action !== 'update')
   ]
 )(TodoApp)
 
